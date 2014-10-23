@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{0B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileServices.SmartThings", "SmartThings\MobileServices.SmartThings.csproj", "{4F7D3C54-97A2-43EA-910E-EBF76EAC7ACD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileServices.Github", "Github\MobileServices.Github.csproj", "{6A44D83E-4657-405B-A272-083C1E499D93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,11 +25,12 @@ Global
 		{4F7D3C54-97A2-43EA-910E-EBF76EAC7ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F7D3C54-97A2-43EA-910E-EBF76EAC7ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F7D3C54-97A2-43EA-910E-EBF76EAC7ACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A44D83E-4657-405B-A272-083C1E499D93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A44D83E-4657-405B-A272-083C1E499D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A44D83E-4657-405B-A272-083C1E499D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A44D83E-4657-405B-A272-083C1E499D93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{4F7D3C54-97A2-43EA-910E-EBF76EAC7ACD} = {0BCED35A-6150-49A5-B834-137C0E23CB6A}
 	EndGlobalSection
 EndGlobal
