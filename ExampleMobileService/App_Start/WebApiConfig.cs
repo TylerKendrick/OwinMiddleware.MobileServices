@@ -6,6 +6,7 @@ using System.Web.Http;
 using ExampleMobileService.DataObjects;
 using ExampleMobileService.Models;
 using Microsoft.WindowsAzure.Mobile.Service;
+using MobileServices;
 
 namespace ExampleMobileService
 {
@@ -15,6 +16,10 @@ namespace ExampleMobileService
         {
             // Use this class to set configuration options for your mobile service
             ConfigOptions options = new ConfigOptions();
+            options.LoginProviders.Add(typeof(SmartThings.LoginProvider));
+            options.LoginProviders.Add(typeof(Github.LoginProvider));
+            options.LoginProviders.Add(typeof(Facebook.LoginProvider));
+            options.LoginProviders.Add(typeof(StackExchange.LoginProvider));
 
             // Use this class to set WebAPI configuration options
             HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
