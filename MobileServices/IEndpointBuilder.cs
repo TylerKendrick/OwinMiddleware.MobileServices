@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MobileServiceProviders
+namespace MobileServices
 {
     public interface IEndpointBuilder
     {
