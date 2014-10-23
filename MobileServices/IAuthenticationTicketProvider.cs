@@ -1,0 +1,12 @@
+﻿using System.Threading.Tasks;
+using Microsoft.Owin;
+using Microsoft.Owin.Security;
+
+namespace MobileServiceProviders
+{
+    public interface IAuthenticationTicketProvider
+    {
+        Task<AuthenticationTicket> GenerateAuthenticationTicket(IOwinContext owinContext,
+            IAuthenticationOptions options, AuthenticationProperties properties);
+    }
+}
