@@ -35,13 +35,19 @@ namespace MobileServiceProviders
                     String.Format("{0}={1}", x.Key, Uri.EscapeDataString(x.Value))))
                 : null;
         }
-        
-        public static Uri GenerateUri(Uri baseUri, PathString pathString, 
+
+        public static Uri GenerateUri(Uri baseUri, PathString pathString,
             IEnumerable<KeyValuePair<string, string>> parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, string>();
             var requestQuery = pathString.Value + Parameterize(parameters);
             return new Uri(baseUri, requestQuery);
+        }
+        public static Uri GenerateUri(Uri baseUri,
+            IEnumerable<KeyValuePair<string, string>> parameters = null)
+        {
+            parameters = parameters ?? new Dictionary<string, string>();
+            return new Uri(baseUri, Parameterize(parameters));
         }
 
         public static PathString CombinePaths(this PathString pathString, params string[] strings)

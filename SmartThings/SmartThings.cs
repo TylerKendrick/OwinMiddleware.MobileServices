@@ -16,9 +16,8 @@ namespace MobileServices
 {
     public class SmartThings
     {
-        private static readonly Uri ApiEndpoint = new Uri("https://graph.api.smartthings.com");
-        private static readonly PathString AuthPath = new PathString("/oauth/authorize");
-        private static readonly PathString TokenPath = new PathString("/oauth/token");
+        private static readonly Uri AuthEndpoint = new Uri("https://graph.api.smartthings.com/oauth/authorize");
+        private static readonly Uri TokenEndpoint = new Uri("https://graph.api.smartthings.com/oauth/token");
         public const string ProviderName = "SmartThings";
         private const string ClientId = "Client Application ID Goes Here";
         private const string ClientSecret = "Client Secret Key Goes Here";
@@ -27,7 +26,7 @@ namespace MobileServices
         public class EndpointBuilder : WebApi.EndpointBuilder
         {
             public EndpointBuilder()
-                : base(ApiEndpoint, AuthPath, TokenPath)
+                : base(AuthEndpoint, TokenEndpoint)
             {
             }
 
@@ -113,7 +112,7 @@ namespace MobileServices
             protected override WebApi.AuthenticationOptions CreateAuthenticationOptions()
             {
                 var options = new WebApi.AuthenticationOptions(ProviderName, XmlSchemaString,
-                    ApiEndpoint, TokenPath, AuthPath);
+                    TokenEndpoint, AuthEndpoint);
                 options.Scope.Add("app");
                 return options;
             }

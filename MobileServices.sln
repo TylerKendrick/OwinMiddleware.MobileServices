@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileServices.SmartThings"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileServices.Github", "Github\MobileServices.Github.csproj", "{6A44D83E-4657-405B-A272-083C1E499D93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileServices.Facebook", "Facebook\MobileServices.Facebook.csproj", "{8087F744-8889-4957-9658-1509920B9340}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{6A44D83E-4657-405B-A272-083C1E499D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A44D83E-4657-405B-A272-083C1E499D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A44D83E-4657-405B-A272-083C1E499D93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8087F744-8889-4957-9658-1509920B9340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8087F744-8889-4957-9658-1509920B9340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8087F744-8889-4957-9658-1509920B9340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8087F744-8889-4957-9658-1509920B9340}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

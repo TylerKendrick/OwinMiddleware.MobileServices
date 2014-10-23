@@ -2,7 +2,7 @@
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 
-namespace MobileServiceProviders
+namespace MobileServices
 {
     public interface IAuthenticationTicketProvider
     {

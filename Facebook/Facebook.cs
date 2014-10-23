@@ -13,14 +13,14 @@ using Owin;
 
 namespace MobileServices
 {
-    public class Github
+    public class Facebook
     {
         private const string XmlSchemaString = "http://www.w3.org/2001/XMLSchema#string";
         private const string ClientId = "Client Application Id Goes Here";
         private const string ClientSecret = "Client Secret Key Goes Here";
-        private static readonly Uri AuthEndpoint = new Uri("https://github.com/login/oauth/authorize");
-        private static readonly Uri TokenEndpoint = new Uri("https://github.com/login/oauth/access_token");
-        private const string ProviderName = "GitHub";
+        private static readonly Uri AuthEndpoint = new Uri("https://facebook.com/dialog/oauth");
+        private static readonly Uri TokenEndpoint = new Uri("https://graph.facebook.com/oauth/access_token");
+        private const string ProviderName = "Facebook";
 
         public class EndpointBuilder : WebApi.EndpointBuilder
         {
@@ -47,9 +47,10 @@ namespace MobileServices
                 return new Dictionary<string, string>
                 {
                     {"client_id", ClientId},
-                    {"redirect_uri", redirectUri},
+                    {"redirect_uri", "https://www.facebook.com/connect/login_success.html"},
                     {"scope", string.Join(",", scope)},
-                    {"state", state}
+                    {"state", state},
+                    {"response_type", "code"}
                 };
             }
         }
@@ -61,21 +62,20 @@ namespace MobileServices
             {
             }
 
-            protected async override Task<IEnumerable<Claim>> GenerateClaimsAsync(string responseContent)
+            protected override Task<IEnumerable<Claim>> GenerateClaimsAsync(string responseContent)
             {
-                var response = JsonConvert.DeserializeObject<dynamic>(responseContent);
-                string accessToken = response.access_token;
+                var json = JsonConvert.DeserializeObject<dynamic>(responseContent);
+                string accessToken = json.access_token;
 
-                var requestUri = "https://api.github.com/user?access_token=" + Uri.EscapeDataString(accessToken);
-                var json = await HttpClient.GetAsJsonAsync<dynamic>(requestUri);
+                return GetClaims(accessToken, json);
+            }
 
+            private static Claim[] GetClaims(string accessToken, dynamic json)
+            {
                 return new[]
                 {
                     new Claim(ServiceClaimTypes.ProviderAccessToken, accessToken, XmlSchemaString, ProviderName),
-                    new Claim(ClaimTypes.NameIdentifier, json.id, XmlSchemaString, ProviderName), 
-                    new Claim(ClaimsIdentity.DefaultNameClaimType, json.username, XmlSchemaString, ProviderName),
-                    new Claim("urn:github:name", json.name, XmlSchemaString, ProviderName), 
-                    new Claim("urn:github:url", json.link, XmlSchemaString, ProviderName)
+                    new Claim(ClaimTypes.NameIdentifier, json.user_id, XmlSchemaString, ProviderName)
                 };
             }
         }

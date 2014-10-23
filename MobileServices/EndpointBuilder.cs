@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.Owin;
 using MobileServiceProviders;
 
 namespace MobileServices
@@ -9,27 +8,25 @@ namespace MobileServices
     {
         public abstract class EndpointBuilder : IEndpointBuilder
         {
-            private readonly Uri _baseUri;
-            private readonly PathString _authorizationPath;
-            private readonly PathString _tokenPath;
+            private readonly Uri _authUri;
+            private readonly Uri _tokenUri;
 
-            protected EndpointBuilder(Uri baseUri, PathString authorizationPath, PathString tokenPath)
+            protected EndpointBuilder(Uri authUri, Uri tokenUri)
             {
-                _baseUri = baseUri;
-                _authorizationPath = authorizationPath;
-                _tokenPath = tokenPath;
+                _authUri = authUri;
+                _tokenUri = tokenUri;
             }
 
             public Uri Authorization(string state, string scope, string redirectUri)
             {
                 var parameters = AuthorizationParameters(state, scope, redirectUri);
-                return WebApiHelper.GenerateUri(_baseUri, _authorizationPath, parameters);
+                return WebApiHelper.GenerateUri(_authUri, parameters);
             }
 
             public Uri Token(string state, string code, string redirectUri)
             {
                 var parameters = TokenParameters(state, code, redirectUri);
-                return WebApiHelper.GenerateUri(_baseUri, _tokenPath, parameters);
+                return WebApiHelper.GenerateUri(_tokenUri, parameters);
             }
 
             protected abstract IEnumerable<KeyValuePair<string, string>> AuthorizationParameters(string state,

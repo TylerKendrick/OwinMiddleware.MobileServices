@@ -4,13 +4,12 @@ using System.Net.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 
-namespace MobileServiceProviders
+namespace MobileServices
 {
     public interface IAuthenticationOptions
     {
-        Uri ApiEndpoint { get; set; }
-        PathString TokenPath { get; set; }
-        PathString AuthorizationPath { get; set; }
+        Uri AuthEndpoint { get; set; }
+        Uri TokenEndpoint { get; set; }
         PathString CallbackPath { get; set; }
         ICertificateValidator BackchannelCertificateValidator { get; set; }
         HttpMessageHandler BackchannelHttpHandler { get; set; }
